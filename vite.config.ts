@@ -1,6 +1,15 @@
 import { defineConfig } from 'vite';
 import preact from '@preact/preset-vite';
 
-export default defineConfig({
-  plugins: [preact()],
+export default defineConfig(({ command }) => {
+  const config = {
+    plugins: [preact()],
+    base: '/',
+  };
+
+  if (command !== 'serve') {
+    config.base = '/SpyGame/';
+  }
+
+  return config;
 });
