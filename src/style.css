@@ -1,0 +1,288 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #535bf2;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+#app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex: 1;
+}
+
+.home-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-block: 40px;
+}
+
+.spy-img {
+  opacity: 0.5;
+  filter: brightness(0.8);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 30px;
+  font-size: 1.5em;
+}
+
+.links a {
+  position: relative;
+}
+
+.start-btn {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 12px 50px;
+  font-size: 2em;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.setting-container {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-size: 2em;
+  font-weight: 600;
+}
+.time button {
+  padding: 5px 15px;
+}
+
+.prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prompt input {
+  height: 100px;
+}
+
+input,
+textarea {
+  border-radius: 10px;
+  border-color: transparent;
+  padding-left: 10px;
+}
+textarea {
+  padding-top: 5px;
+  font-size: 1.2em;
+}
+
+.section-title {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.add-user {
+  display: flex;
+  gap: 10px;
+}
+
+.add-user input {
+  flex: 1;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 1.2em;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.players-list div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number {
+  opacity: 0.3;
+  margin-right: 20px;
+}
+
+.players-list button {
+  padding: 6px 15px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #535bf2;
+  opacity: 0.5;
+  margin-block: 25px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 20px;
+  height: 80%;
+  width: 90%;
+}
+
+.card .name {
+  font-size: 1.5em;
+}
+
+.card.spy {
+  border-color: red;
+  font-weight: 700;
+}
+
+.spy p {
+  font-size: 2em;
+}
+
+.hint {
+  opacity: 0.6;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.role,
+.loc {
+  opacity: 0.6;
+  font-size: 1.3em;
+}
+
+.role-name,
+.loc-name {
+  font-weight: 600;
+  font-size: 2em;
+}
+
+.timer {
+  font-size: 5em;
+  color: #646cff;
+  font-weight: 600;
+}
+
+.end {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  align-items: center;
+  text-align: center;
+  font-size: 2em;
+}
+
+.spy-player {
+  color: rgba(255, 0, 0, 0.7);
+}
+
+.loading {
+  font-size: 1.6em;
+}
