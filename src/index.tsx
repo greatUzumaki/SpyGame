@@ -8,6 +8,7 @@ import { Settings } from './pages/Settings.js';
 import { NotFound } from './pages/_404.jsx';
 import './style.css';
 
+console.log(import.meta.env);
 export function App() {
   return (
     <LocationProvider>
