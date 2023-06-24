@@ -11,16 +11,16 @@ const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
 });
 
-type TStage = 'READY' | 'GAME' | 'END';
+type TStage = 'LOADING' | 'READY' | 'GAME' | 'END';
 
 export const Game = () => {
   const { players } = usePlayers();
-  const { minutes, prompt } = useSettings();
+  const { minutes, prompt, adjective } = useSettings();
 
   const [loading, setLoading] = useState(true);
   const [activePlayer, setActivePlayer] = useState(0);
   const [showCard, setShowCard] = useState(false);
-  const [stage, setStage] = useState<TStage>('READY');
+  const [stage, setStage] = useState<TStage>('LOADING');
   const [roles, setRoles] = useState<string[]>([]);
   const [location, setLocation] = useState('');
 
@@ -33,7 +33,9 @@ export const Game = () => {
         messages: [
           {
             role: 'system',
-            content: `Будь ведущем игры шпион - тебе нужно сгенерировать случайную локацию чтобы название было не слишком длинным и 3-4 роли с короткими названием которые соответствуют этой локации. ${
+            content: `Будь ведущем игры шпион - тебе нужно сгенерировать случайную локацию ${
+              adjective === 'false' ? 'без прилагательных' : ''
+            }и 3-4 роли без подробностей которые соответствуют этой локации. ${
               prompt ? 'Предпочтения по игре - ' + prompt : ''
             }`,
           },
@@ -57,6 +59,7 @@ export const Game = () => {
       setRoles(r);
       setLocation(parsedResponse.location);
       setLoading(false);
+      setStage('READY');
     };
 
     fetch();
@@ -114,6 +117,7 @@ export const Game = () => {
     READY: <ReadyStage />,
     GAME: <Timer initialMinutes={minutes} onTimeout={() => setStage('END')} />,
     END: <EndStage />,
+    LOADING: null,
   };
 
   return (

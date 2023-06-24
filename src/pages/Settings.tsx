@@ -5,8 +5,15 @@ import { useSettings } from '../hooks/useSettings';
 export const Settings = () => {
   const { players, addPlayer, deletePlayer } = usePlayers();
   const [newPlayer, setNewPlayer] = useState('');
-  const { handleSavePrompt, minutes, prompt, setMinutes, setPrompt } =
-    useSettings();
+  const {
+    handleSavePrompt,
+    minutes,
+    adjective,
+    setAdjective,
+    prompt,
+    setMinutes,
+    setPrompt,
+  } = useSettings();
 
   const handleAddPlayer = () => {
     addPlayer(newPlayer);
@@ -74,6 +81,17 @@ export const Settings = () => {
           />
           <button onClick={handleSavePrompt}>Сохранить</button>
         </div>
+      </div>
+
+      <div>
+        <p class={'section-title'}>Локации с прилагательными</p>
+        <button
+          onClick={() =>
+            setAdjective((old) => (old === 'true' ? 'false' : 'true'))
+          }
+        >
+          {adjective === 'true' ? 'Выключить' : 'Включить'}
+        </button>
       </div>
     </div>
   );
