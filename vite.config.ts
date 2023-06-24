@@ -4,7 +4,7 @@ import preact from '@preact/preset-vite';
 export default defineConfig(({ command }) => {
   const config = {
     plugins: [preact()],
-    base: '/SpyGame',
+    base: '/SpyGame/',
   };
 
   if (command !== 'serve') {
