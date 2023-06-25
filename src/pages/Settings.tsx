@@ -11,8 +11,11 @@ export const Settings = () => {
     adjective,
     setAdjective,
     prompt,
+    userPrompt,
     setMinutes,
     setPrompt,
+    setUserPrompt,
+    handleSaveUserPrompt,
   } = useSettings();
 
   const handleAddPlayer = () => {
@@ -70,16 +73,30 @@ export const Settings = () => {
       </div>
 
       <div>
-        <p class={'section-title'}>Промпт</p>
+        <p class={'section-title'}>Системный промпт</p>
 
         <div class={'prompt'}>
           <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.currentTarget.value)}
             rows={8}
-            placeholder={'Хочу ебанутые локации'}
+            placeholder={'Исключи локации - больница, тюрьма'}
           />
           <button onClick={handleSavePrompt}>Сохранить</button>
+        </div>
+      </div>
+
+      <div>
+        <p class={'section-title'}>Пользовательский промпт</p>
+
+        <div class={'prompt'}>
+          <textarea
+            value={userPrompt}
+            onChange={(e) => setUserPrompt(e.currentTarget.value)}
+            rows={8}
+            placeholder={'Хочу локации из игр'}
+          />
+          <button onClick={handleSaveUserPrompt}>Сохранить</button>
         </div>
       </div>
 

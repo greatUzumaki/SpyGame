@@ -15,7 +15,7 @@ type TStage = 'LOADING' | 'READY' | 'GAME' | 'END';
 
 export const Game = () => {
   const { players } = usePlayers();
-  const { minutes, prompt, adjective } = useSettings();
+  const { minutes, prompt, adjective, userPrompt } = useSettings();
 
   const [loading, setLoading] = useState(true);
   const [activePlayer, setActivePlayer] = useState(0);
@@ -46,7 +46,12 @@ export const Game = () => {
             content:
               '{"location": "Бар", "roles": ["Бармен", "Официант", "Клиент"]}',
           },
-          { role: 'user', content: 'Создай локацию и роли' },
+          {
+            role: 'user',
+            content: `Создай локацию и роли ${
+              userPrompt ? ', ' + userPrompt : ''
+            }`,
+          },
         ],
       });
 
@@ -57,7 +62,10 @@ export const Game = () => {
       const parsedResponse: { location: string; roles: string[] } =
         JSON.parse(response);
 
-      const r = SR(players.length, parsedResponse.roles);
+      const r = SR(
+        players.length,
+        parsedResponse.roles.filter((r) => r)
+      );
       setRoles(r);
       setLocation(parsedResponse.location);
       setLoading(false);
