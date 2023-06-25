@@ -25,6 +25,12 @@ export const Game = () => {
   const [location, setLocation] = useState('');
 
   useLayoutEffect(() => {
+    const content = `Будь ведущем игры шпион - тебе нужно сгенерировать случайную локацию ${
+      adjective === 'false' ? 'без прилагательных' : ''
+    }и 3-4 роли без подробностей которые соответствуют этой локации. ${
+      prompt ? 'Предпочтения по игре - ' + prompt : ''
+    }`;
+
     const fetch = async () => {
       const openai = new OpenAIApi(configuration);
 
@@ -33,11 +39,7 @@ export const Game = () => {
         messages: [
           {
             role: 'system',
-            content: `Будь ведущем игры шпион - тебе нужно сгенерировать случайную локацию ${
-              adjective === 'false' ? 'без прилагательных' : ''
-            }и 3-4 роли без подробностей которые соответствуют этой локации. ${
-              prompt ? 'Предпочтения по игре - ' + prompt : ''
-            }`,
+            content: content,
           },
           {
             role: 'assistant',
