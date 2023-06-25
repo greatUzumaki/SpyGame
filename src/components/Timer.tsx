@@ -13,7 +13,7 @@ export const Timer = ({ initialMinutes = 5, onTimeout }: ITimer) => {
     let interval = null;
 
     if (minutes === 0 && seconds === 0) {
-      onTimeout(); // Вызываем функцию обратного вызова при истечении времени
+      onTimeout();
       return;
     }
 
@@ -32,9 +32,12 @@ export const Timer = ({ initialMinutes = 5, onTimeout }: ITimer) => {
   }, [minutes, seconds, onTimeout]);
 
   return (
-    <div className='timer'>
-      <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
-      <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+    <div class={'timer-container'}>
+      <p>Оставшееся время:</p>
+      <div className='timer'>
+        <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
+        <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+      </div>
     </div>
   );
 };
