@@ -55,10 +55,15 @@ export const Game = () => {
         ],
       });
 
+      if (chatCompletion.status !== 200) {
+        alert('Ошибка');
+        return;
+      }
       const response = chatCompletion.data.choices[0].message.content.replace(
         /\n/g,
         ''
       );
+
       const parsedResponse: { location: string; roles: string[] } =
         JSON.parse(response);
 
