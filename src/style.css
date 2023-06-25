@@ -36,6 +36,7 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  text-shadow: 0px 3px 4px black;
 }
 a:hover {
   color: #535bf2;
@@ -92,6 +93,7 @@ button:focus-visible {
 .spy-img {
   opacity: 0.5;
   filter: brightness(0.8);
+  max-width: 200px;
 }
 
 .links {
@@ -300,6 +302,7 @@ textarea::placeholder {
   font-size: 6em;
   color: #646cff;
   font-weight: 600;
+  text-shadow: 0px 10px 3px rgba(0, 0, 0, 0.3);
 }
 .timer-container {
   text-align: center;
