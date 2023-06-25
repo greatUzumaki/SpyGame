@@ -198,7 +198,8 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  font-size: 1.2em;
+  font-size: 1.3em;
+  opacity: 0.5;
 }
 
 .players-list {
